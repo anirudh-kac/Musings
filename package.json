@@ -1,0 +1,25 @@
+{
+  "name": "musings",
+  "version": "1.0.0",
+  "description": "An app to share your thoughts",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anirudh-kac/Musings.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anirudh-kac/Musings/issues"
+  },
+  "homepage": "https://github.com/anirudh-kac/Musings#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  }
+}
