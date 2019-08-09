@@ -1,9 +1,17 @@
 .footer {
-   position: fixed;
    left: 0;
    bottom: 0;
    width: 100%;
-   background-color: red;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   background-color: gray;
    color: white;
    text-align: center;
+}
+
+.post-image{
+  height:200px;
+  width: 250px;
+  padding: 10 10 10 10;
+  margin-left: auto;
 }
