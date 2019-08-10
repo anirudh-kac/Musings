@@ -1,7 +1,16 @@
 <%-include("partials/header")-%>
+<h1>Share your thoughts with our community</h1>
 
+<div class ="post-form">
+  <form method="post" target="/post">
+    Enter the topic or keyword: <br />
+    <input type="text" name="keyword" placeholder="What's your thought about?" required/>  <br />
+    Pour your thoughts here : <br />
+    <textarea name="text" placeholder="Thoughts Please!" required></textarea><br />
+    <button type="submit" name="button">Submit</button>
 
+    </form>
 
-
+  </div>
 
 <%-include("partials/footer")-%>
