@@ -60,6 +60,13 @@ app.post("/post", function(req, res) {
   var source;
   //parse the respone to get the input values
   const body = req.body;
+
+// set the default values to the post object
+  const post = {
+    text: body.text,
+    image: "image.jpeg",
+    keyword: body.keyword,
+  }
 // create the options variable to pass in the request
   const options = {
     url: "https://pixabay.com/api/",
@@ -77,25 +84,25 @@ request(options,function(error,response,body){
   }
   else{
     var data=JSON.parse(body);
-    if(data.hits===0)
+    if(data.total===0)
     {
       console.log("No image found. Using default image");
-      source="image.jpeg";
-      console.log(source);
     }
     else
     {
       source=data.hits[0].webformatURL;
       console.log(source);
+      post.image=source;
     }
   }
 });
 
-  const post = {
+// the below commented code doesn't work because request may not even be completed when source is assigned to post.image
+  /*const post = {
     text: body.text,
     image: source,
     keyword: body.keyword,
-  }
+  }*/
   postsArray.push(post);
   res.render("submitted");
 });
