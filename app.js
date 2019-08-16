@@ -10,29 +10,48 @@ app.use(bodyParser.urlencoded({
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
+
+var apiKey="put api key here";
+
+
+// date
+var date = new Date();
+var currentTime=date.getTime();
+console.log(currentTime);
+// 1 day = 86400000 ms.
+
+
+
+
 //Array used for temporarily storing posts till database is integrated
+
+// the time for default posts are set such that they dont expire for long time
 const post1 = {
   text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.",
   image: "image.jpeg",
-  keyword: "key"
+  keyword: "key",
+  time:111565969694937
 };
 
 const post2 = {
   text: "thoughts thoushh hhd hha hha a mohfi iioadsyuf n shfiowf nmnosh h hsvhoishdv so isovhoishv osvhsiv ",
   image: "image.jpeg",
-  keyword: "key"
+  keyword: "key",
+  time:111565969694937
 }
 
 const post3 = {
   text: "ayfiuu yfduywqf euyqwfu wufuwf w akagcua cacacuatuk gcuagtcu",
   image: "image.jpeg",
-  keyword: "key"
+  keyword: "key",
+  time:111565969694937
 }
 
 const post4 = {
   text: "Posts are arranged in a grid manner and the page is responsive",
   image: "image.jpeg",
-  keyword: "key"
+  keyword: "key",
+  time:111565969694937,
 }
 
 const postsArray = [post1, post2, post3, post4];
@@ -42,8 +61,11 @@ app.get("/", function(req, res) {
 });
 
 app.get("/read", function(req, res) {
+
+  // passing currentTime to avoid printing expired posts
   res.render("read", {
-    posts: postsArray
+    posts: postsArray,
+    currentTime:currentTime,
   });
 });
 
@@ -62,17 +84,20 @@ app.post("/post", function(req, res) {
   const body = req.body;
 
 // set the default values to the post object
+// we need to store the date so as to check if post has expired
   const post = {
     text: body.text,
     image: "image.jpeg",
     keyword: body.keyword,
+    time:currentTime,
+
   }
 // create the options variable to pass in the request
   const options = {
     url: "https://pixabay.com/api/",
     method: "GET",
     qs: {
-      key: "api-key",
+      key: apiKey,
       q: body.keyword,
     },
   };
@@ -103,8 +128,12 @@ request(options,function(error,response,body){
     image: source,
     keyword: body.keyword,
   }*/
+
   postsArray.push(post);
   res.render("submitted");
+
+
+
 });
 
 
