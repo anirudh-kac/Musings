@@ -1,10 +1,59 @@
+/*
+color scheme
+#222831
+#393e46
+#00adb5
+#eeeeee
+
+
+
+    font-family: 'Pacifico', cursive;
+
+    font-family: 'Shadows Into Light', cursive;
+
+    font-family: 'Acme', sans-serif;
+
+
+*/
+body{
+  background-color:#00adb5;
+}
+.navbar-brand{
+  font-family: 'Pacifico', cursive;
+}
+.index-text{
+  padding-top: 1rem;
+  padding-bottom: 5rem;
+  background-color: #eeeeee;
+  text-align: center;
+  font-size: 2.5rem;
+  font-family: 'Acme', sans-serif;
+  color: #393e46;
+}
+.title-wrapper{
+  background-image:url("ocean.jpg");
+  width: 100%;
+  height: 40rem;
+  background-size: 100% 100%;
+}
+.title{
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+}
+.main-title{
+  padding-top: 5rem;
+  font-size: 7rem;
+}
+.sub-title{
+  font-size: 4rem;
+}
 .footer {
    left: 0;
    bottom: 0;
    width: 100%;
    padding-top: 10px;
    padding-bottom: 10px;
-   background-color: gray;
+   background-color: #00adb5;
    color: white;
    text-align: center;
 }

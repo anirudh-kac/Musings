@@ -11,7 +11,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 
-var apiKey="put api key here";
+var apiKey="13278658-15b0b36268f67d711a6206dce";
 
 
 // date
@@ -60,6 +60,9 @@ app.get("/", function(req, res) {
   res.render("index");
 });
 
+app.get("/about",function(req,res){
+  res.render("about");
+});
 app.get("/read", function(req, res) {
 
   // passing currentTime to avoid printing expired posts
