@@ -108,6 +108,27 @@ body{
   box-shadow: 3px 3px 3px #393e46;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #393e46;
-  color: #00adb5;
+  background-color: #eeeeee;
+  color: #393e46;
+  border-radius: 5%;
+}
+.about-header{
+  margin-top: 30px;
+}
+.about-bottom{
+  text-align: center;
+}
+.about-main-title{
+  font-family: 'Pacifico', cursive;
+  font-size: 3.5rem;
+
+}
+.about-sub-title{
+  font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  padding-bottom: 40px;
+}
+.about-text{
+    font-family: 'Acme', sans-serif;
+    font-weight: lighter;
 }
