@@ -48,14 +48,10 @@ body{
   font-size: 4rem;
 }
 .footer {
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   padding-top: 10px;
-   padding-bottom: 10px;
+   padding-top: 70px;
    background-color: #00adb5;
    color: white;
-   text-align: center;
+   text-align: center
 }
 
 .post-div{
@@ -131,4 +127,16 @@ body{
 .about-text{
     font-family: 'Acme', sans-serif;
     font-weight: lighter;
+}
+.contact-text{
+  font-family: 'Acme', sans-serif;
+  text-align: center;
+  font-size: 2rem;
+  padding-bottom: 30px;
+}
+.contact-buttons{
+  text-align: center;
+}
+.contact-buttons i {
+  color: #393e46;
 }
