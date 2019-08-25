@@ -47,7 +47,7 @@ app.get("/read", function(req, res) {
   //Post.find() queries the collection, err contains error , postsArray is array of matching documents
 
   Post.find({},function(err,postsArray){
-    console.log(postsArray);
+    //console.log(postsArray);
     res.render("read", {
       posts: postsArray,
       currentTime:currentTime,
