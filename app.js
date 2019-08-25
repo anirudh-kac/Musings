@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const request = require("request");
 const mongoose =require("mongoose");
 
+const PORT =process.env.PORT || 3000;
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -122,6 +124,6 @@ request(options,function(error,response,body){
 });
 
 
-app.listen(3000  || process.env.PORT, function() {
+app.listen(PORT, function() {
   console.log("Server started on port 3000");
 });
