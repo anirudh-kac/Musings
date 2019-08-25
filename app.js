@@ -56,8 +56,8 @@ app.get("/read", function(req, res) {
 
 });
 
-app.get("/post", function(req, res) {
-  res.render("post");
+app.get("/share", function(req, res) {
+  res.render("share");
 });
 
 app.get("/contact", function(req, res) {
@@ -65,7 +65,7 @@ app.get("/contact", function(req, res) {
 });
 
 
-app.post("/post", function(req, res) {
+app.post("/share", function(req, res) {
   var source;
   var body=req.body;
 // create the options variable to pass in the request
