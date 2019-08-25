@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const request = require("request");
-
+const mongoose =require("mongoose");
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -10,6 +10,16 @@ app.use(bodyParser.urlencoded({
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
+mongoose.connect("mongodb://localhost:27017/musings",{useNewUrlParser:true});
+
+const musingsSchema=new mongoose.Schema({
+  text:String,
+  image:String,
+  keyword:String,
+  time:Number,
+});
+
+const Post = mongoose.model("Post",musingsSchema);
 
 var apiKey="13278658-15b0b36268f67d711a6206dce";
 
@@ -26,7 +36,7 @@ console.log(currentTime);
 //Array used for temporarily storing posts till database is integrated
 
 // the time for default posts are set such that they dont expire for long time
-const post1 = {
+/*const post1 = {
   text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.",
   image: "image.jpeg",
   keyword: "key",
@@ -54,7 +64,7 @@ const post4 = {
   time:111565969694937,
 }
 
-const postsArray = [post1, post2, post3, post4];
+const postsArray = [post1, post2, post3, post4];*/
 
 app.get("/", function(req, res) {
   res.render("index");
@@ -66,10 +76,22 @@ app.get("/about",function(req,res){
 app.get("/read", function(req, res) {
 
   // passing currentTime to avoid printing expired posts
-  res.render("read", {
+
+  Post.find({},function(err,postsArray){
+    console.log(postsArray);
+    res.render("read", {
+      posts: postsArray,
+      currentTime:currentTime,
+    });
+  });
+
+
+
+  /*res.render("read", {
     posts: postsArray,
     currentTime:currentTime,
-  });
+  });*/
+
 });
 
 app.get("/post", function(req, res) {
@@ -84,17 +106,21 @@ app.get("/contact", function(req, res) {
 app.post("/post", function(req, res) {
   var source;
   //parse the respone to get the input values
-  const body = req.body;
+  var body = req.body;
+
+  console.log(body.text);
 
 // set the default values to the post object
 // we need to store the date so as to check if post has expired
-  const post = {
+  /*const post = {
     text: body.text,
     image: "image.jpeg",
     keyword: body.keyword,
     time:currentTime,
 
-  }
+  }*/
+
+
 // create the options variable to pass in the request
   const options = {
     url: "https://pixabay.com/api/",
@@ -115,12 +141,29 @@ request(options,function(error,response,body){
     if(data.total===0)
     {
       console.log("No image found. Using default image");
+      source="image.jpeg";
+      const musingsPost=new Post({
+        text:req.body.text,
+        keyword:req.body.keyword,
+        image:source,
+        time:currentTime,
+      });
+      musingsPost.save();
+      res.render("submitted");
+
     }
     else
     {
       source=data.hits[0].webformatURL;
       console.log(source);
-      post.image=source;
+      const musingsPost=new Post({
+        text:req.body.text,
+        keyword:req.body.keyword,
+        image:source,
+        time:currentTime,
+      });
+      musingsPost.save();
+      res.render("submitted");
     }
   }
 });
@@ -132,8 +175,8 @@ request(options,function(error,response,body){
     keyword: body.keyword,
   }*/
 
-  postsArray.push(post);
-  res.render("submitted");
+//  postsArray.push(post);
+
 
 
 
