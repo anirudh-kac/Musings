@@ -9,10 +9,10 @@
 <% for(var i=0;i<posts.length;i++) { %>
 
   <%  if((currentTime-posts[i].time)>86400000){continue;}%>
-    <div class="col-lg-5 col-md-5 col-sm-12 post-image-div">
+    <div class="col-lg-5 col-md-12 col-sm-12 post-image-div">
     <img src="<%=posts[i].image%>" alt="image" class="post-image">
     </div>
-    <div class="col-lg-7 col-md-7 col-sm-12 post-text-div">
+    <div class="col-lg-7 col-md-12 col-sm-12 post-text-div">
           <p><%=posts[i].text%></p>
       </div>
 <% }%>
