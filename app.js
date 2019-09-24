@@ -3,9 +3,11 @@ const app = express();
 const bodyParser = require("body-parser");
 const request = require("request");
 const mongoose =require("mongoose");
+const dotenv=require('dotenv').config();
 
 const PORT =process.env.PORT || 3000;
-
+const API_KEY=process.env.API_KEY;
+const DB_URL=process.env.DB_URL;
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -15,7 +17,7 @@ app.use(express.static("public"));
 
 //connect to mongodb server
 //mongoose.connect("mongodb://localhost:27017/musings",{useNewUrlParser:true});
-mongoose.connect("mongodb+srv://musingsUser:musings2019@cluster0-3rgjx.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true});
+mongoose.connect(DB_URL,{useNewUrlParser:true});
 
 // Schema contains the structure of each document (post)
 const musingsSchema=new mongoose.Schema({
@@ -76,7 +78,7 @@ app.post("/share", function(req, res) {
     url: "https://pixabay.com/api/",
     method: "GET",
     qs: {
-      key: apiKey,
+      key: API_KEY,
       q: req.body.keyword,
     },
   };
