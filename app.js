@@ -6,8 +6,11 @@ const mongoose =require("mongoose");
 const dotenv=require('dotenv').config();
 
 const PORT =process.env.PORT || 3000;
-const API_KEY=process.env.API_KEY;
-const DB_URL=process.env.DB_URL;
+//const API_KEY=process.env.API_KEY;
+//const DB_URL=process.env.DB_URL;
+API_KEY="13278658-15b0b36268f67d711a6206dce";
+DB_URL="mongodb+srv://musingsUser:musings2019@cluster0-3rgjx.mongodb.net/test?retryWrites=true&w=majority";
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
