@@ -17,7 +17,7 @@ app.use(express.static("public"));
 
 //connect to mongodb server
 //mongoose.connect("mongodb://localhost:27017/musings",{useNewUrlParser:true});
-mongoose.connect("mongodb+srv://musingsUser:musings2019@cluster0-3rgjx.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true});
+mongoose.connect(DB_URL,{useNewUrlParser:true});
 
 // Schema contains the structure of each document (post)
 const musingsSchema=new mongoose.Schema({
@@ -28,9 +28,6 @@ const musingsSchema=new mongoose.Schema({
 });
 
 const Post = mongoose.model("Post",musingsSchema);
-
-var apiKey="13278658-15b0b36268f67d711a6206dce";
-
 
 // date
 var date = new Date();
@@ -78,7 +75,7 @@ app.post("/share", function(req, res) {
     url: "https://pixabay.com/api/",
     method: "GET",
     qs: {
-      key: "13278658-15b0b36268f67d711a6206dce",
+      key: API_KEY,
       q: req.body.keyword,
     },
   };
