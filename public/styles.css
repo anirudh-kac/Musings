@@ -17,6 +17,7 @@ color scheme
 */
 body{
   background-color:#00adb5;
+  padding-top: 40px;
 }
 .navbar-brand{
   font-family: 'Pacifico', cursive;
